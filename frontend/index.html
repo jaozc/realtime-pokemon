@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Visualizer</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <style>
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+        <div id="pokemon">
+            <img id="sprite" width="150px" alt="pokemon sprite"/> 
+            <br>
+            <h2 id="name"></h2>
+            Pokedex: #<span id="pokedex"></span> <br>
+            Attack: <span id="attack"></span> <br>
+            Special Attack: <span id="specialAttack"></span> <br>
+            Defense: <span id="defense"></span> <br>
+            Special Defense: <span id="specialDefense"></span> <br>
+            Speed: <span id="speed"></span> <br>
+            Total: <span id="total"></span> <br>
+            Generation: <span id="generation"></span> <br>
+        </div>
+
+
+<script>
+    var sock = new SockJS('http://localhost:8081/pokemon');
+    sock.onopen = function() {
+        console.log('open');
+        sock.send('test');
+    };
+
+    sock.onmessage = function(e) {
+        const obj = JSON.parse(e.data);
+        console.log(obj);
+        document.getElementById('sprite').src = obj.sprite;
+        document.getElementById('name').innerText = obj.name;
+        document.getElementById('pokedex').innerText = obj.number;
+        document.getElementById('attack').innerText = obj.attack;
+        document.getElementById('specialAttack').innerText = obj.specialAttack;
+        document.getElementById('defense').innerText = obj.defense;
+        document.getElementById('specialDefense').innerText = obj.specialDefence;
+        document.getElementById('speed').innerText = obj.speed;
+        document.getElementById('total').innerText = obj.total;
+        document.getElementById('generation').innerText = obj.generation;
+    };
+
+    sock.onclose = function() {
+        console.log('close');
+ };
+</script>
+</body>
+</html>

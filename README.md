@@ -1,2 +1,2 @@
 # realtime-pokemon
- A real-time random Pokemon generator using Apache Kafka, WebSockets and Rest API
+ A real time random pokemon selector made with Spring, JS and Kafka
