@@ -19,7 +19,7 @@ O comando acima irá executar a nossa imagem docker em segundo plano, essa image
 
 ## Executando o Produtor da aplicação
 
-Abra o diretório **/realtime-pokemon/backend/producer** em seu terminaç e execute o seguinte comando:
+Abra o diretório **/realtime-pokemon/backend/realtime-producer** em seu terminaç e execute o seguinte comando:
 
 > mvn spring-boot:run
 
@@ -27,7 +27,7 @@ O comando acima pedirá que o Apache Maven compile e execute o produtor da nossa
 
 ## Executando o Consumidor da aplicação
 
-Abra o diretório **/realtime-pokemon/backend/kafka_consumer** em seu terminal e execute o seguinte comando:
+Abra o diretório **/realtime-pokemon/backend/realtime-consumer** em seu terminal e execute o seguinte comando:
 
 > mvn spring-boot:run
 
@@ -39,3 +39,7 @@ Tanto a aplicação Produtora e Consumidora exibem no terminal os pokémons prod
 
 
 > have fun 😀
+
+## Considerações
+
+O arquivo docker-compose na raiz do projeto não apresenta o funcionamento adequeado, por favor não executar!

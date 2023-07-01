@@ -30,3 +30,17 @@ services:
     volumes:
       - ./rtm-data/kafka/data:/data
       - ./rtm-data/kafka/datalog:/datalog
+
+  producer:
+    build:
+      context: ./backend/realtime-producer
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka
+
+  consumer:
+    build:
+      context: ./backend/realtime-consumer
+      dockerfile: Dockerfile
+    depends_on:
+     - producer
